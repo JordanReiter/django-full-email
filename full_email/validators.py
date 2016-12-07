@@ -1,6 +1,6 @@
 import re
 
-from django.core.validators import email_re, EmailValidator, ValidationError
+from django.core.validators import EmailValidator, ValidationError
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -21,6 +21,4 @@ class FullEmailValidator(EmailValidator):
                 raise
 
 
-validate_full_email = FullEmailValidator(email_re,
-                                         _(u'Enter a valid e-mail address.'),
-                                         'invalid')
+validate_full_email = FullEmailValidator()

@@ -3,8 +3,6 @@
 from unittest import TestCase
 from nose.tools import raises
 
-from django.core.validators import email_re, EmailValidator, ValidationError
-
 from . import validators
 from .models import FullEmailField
 from .formfields import FullEmailField as FullEmailFormField
