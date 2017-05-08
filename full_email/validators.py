@@ -8,7 +8,7 @@ EMAIL_REGEX = r'''^(?:['"]?[^@<]+['"]?\s+)?<?(?P<email>[^>]+)>?$'''
 class FullEmailValidator(EmailValidator):
     def __call__(self, value):
         try:
-            super(FullEmailValidator, self).__call__(value)
+            EmailValidator.__call__(self, value)
         except ValidationError as err:
             # Trivial case failed. Try for possible Full Name <email@address>
             email_match = re.match(EMAIL_REGEX, value or '')
@@ -16,7 +16,7 @@ class FullEmailValidator(EmailValidator):
             if email_match:
                 email_value = email_match.groupdict()['email']
             if email_value:
-                super(EmailValidator, self).__call__(email_value)
+                EmailValidator.__call__(self, email_value)
             else:
                 raise
 
